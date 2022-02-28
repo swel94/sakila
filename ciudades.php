@@ -1,6 +1,6 @@
 <?php
 
-$pagina = 'Actores';
+$pagina = 'Ciudades';
 
 # incluir la vista
 

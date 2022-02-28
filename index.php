@@ -11,10 +11,38 @@
     <title>Hello, world!</title>
 </head>
 <body>
+<ul class="nav">
+  <li class="nav-item">
+    <a class="nav-link" href="./actores.php" target="_blank">Actores</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="./categorias.php" target="_blank">Categorias</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="./ciudades.php" target="_blank">Ciudades</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="./clientes.php" target="_blank">Clientes</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="./idiomas.php" target="_blank">Idiomas</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="./paises.php" target="_blank">Paises</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="./peliculas.php">Peliculas</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="./staff.php">Staff</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="./tiendas.php">Tiendas</a>
+  </li>
+</ul>
     <div class="col-lg-8 mx-auto p-3 py-md-5">
   <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
     <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
-      icono
       <span class="fs-4"><i class="bi bi-wallet-fill"></i>Bienvenidos a mi Pagina!</span>
     </a>
   </header>

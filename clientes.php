@@ -1,6 +1,6 @@
 <?php
 
-$pagina = 'Actores';
+$pagina = 'Clientes';
 
 # incluir la vista
 

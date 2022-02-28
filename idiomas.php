@@ -1,6 +1,6 @@
 <?php
 
-$pagina = 'Actores';
+$pagina = 'Idiomas';
 
 # incluir la vista
 

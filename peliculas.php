@@ -1,6 +1,6 @@
 <?php
 
-$pagina = 'Actores';
+$pagina = 'Peliculas';
 
 # incluir la vista
 
