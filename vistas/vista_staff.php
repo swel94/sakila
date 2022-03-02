@@ -2,13 +2,6 @@
 
 <body>
     <?php require_once "parte_menu.php" ?>
-    
-    <div class="container">
-        <h3> <?php echo $pagina; ?> </h3>
-        <?php require_once "parte_head.php" ?>
-
-<body>
-    <?php require_once "parte_menu.php" ?>
 
     <div class="container">
         <h3> <?php echo $pagina; ?> </h3>
@@ -50,12 +43,39 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
+                <?php
+                
+                $query = "SELECT * FROM staff";
+
+                $buscador = $_GET['texto-buscador'] ?? "";
+                    if ($buscador != "") {
+                        $query = "SELECT * FROM staff WHERE first_name = '$buscador'";
+                    }
+
+
+                $resultado = mysqli_query($conexion, $query);
+
+                if ($resultado){
+                    while ($fila = mysqli_fetch_object($resultado)){
+                        $imagen = 'data:image/jpeg;base64,'.base64_encode($fila ->picture);
+
+                        echo "
+                        <tr>
+                            <td>{$fila->staff_id}</td>
+                            <td>{$fila->first_name}</td>
+                            <td>{$fila->last_name}</td>
+                            <td>{$fila->address_id}</td>
+                            <td> <img src='{$imagen}'></td>
+                            <td>{$fila->email}</td>
+                            <td>{$fila->store_id}</td>
+                            <td>{$fila->active}</td>
+                            <td>{$fila->username}</td>
+                            <td>{$fila->password}</td>
+                            <td>{$fila->last_update}</td>                         
+                        </tr>";
+                    }
+                }
+            ?>
                 </tbody>
             </table>
 

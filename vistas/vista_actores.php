@@ -5,7 +5,7 @@
     <?php require_once "parte_menu.php" ?>
 
     <div class="container">
-        <h3><?php echo $pagina; ?></h3> 
+        <h3><?php echo $pagina; ?></h3>
 
 
         <div class="row">
@@ -26,47 +26,39 @@
         </div>
 
         <div class="row">
-            <div class="col-12"></div>
-            <table class="table table-striped table-hover">
-                <thead>
-                    <tr>
-                        <th scope="col">Id</th>
-                        <th scope="col">First Name</th>
-                        <th scope="col">Last Name</th>
-                        <th scope="col">Last Update</th>
-                    </tr>
-                </thead>
-                <tbody>
-                <?php
-                
-                    $query = "SELECT * FROM actor";
-
-                    $resultado = mysqli_query($conexion, $query);
-
-                    if ($resultado){
-                        while ($fila = mysqli_fetch_assoc($resultado)){
-                            echo "
-                            <tr>
-                                <td>${fila['actor_id']}</td>
-                                <td>${fila['first_name']}</td>
-                                <td>${fila['last_name']}</td>
-                                <td>${fila['last_update']}</td>
-                            </tr>";
+            <div class="col-12">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">First Name</th>
+                            <th scope="col">Last Name</th>
+                            <th scope="col">Last Update</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $query = "SELECT * FROM actor";
+                        $buscador = $_GET['texto-buscador'] ?? "";
+                        if ($buscador != "") {
+                            $query = "SELECT * FROM actor WHERE first_name = '$buscador'";
                         }
-                    }
-
-                
-                ?>
-
-
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                </tbody>
-            </table>
+                        $resultado = mysqli_query($conexion, $query);
+                        if ($resultado) {
+                            while ($fila = mysqli_fetch_object($resultado)) {
+                                echo "
+                                <tr>
+                                    <td>{$fila->actor_id}</td>
+                                    <td>{$fila->first_name}</td>
+                                    <td>{$fila->last_name}</td>
+                                    <td>{$fila->last_update}</td>
+                                </tr>";
+                            }
+                        }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
 
         </div>
     </div>
@@ -75,4 +67,4 @@
     <?php require_once "parte_footer.php" ?>
 </body>
 
-</html> 
+</html>

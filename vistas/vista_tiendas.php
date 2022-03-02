@@ -2,13 +2,6 @@
 
 <body>
     <?php require_once "parte_menu.php" ?>
-    
-    <div class="container">
-        <h3> <?php echo $pagina; ?> </h3>
-        <?php require_once "parte_head.php" ?>
-
-<body>
-    <?php require_once "parte_menu.php" ?>
 
     <div class="container">
         <h3> <?php echo $pagina; ?> </h3>
@@ -32,7 +25,7 @@
         </div>
 
         <div class="row">
-            <div class="col-12"></div>
+            <div class="col-16"></div>
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
@@ -43,12 +36,29 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
+                <?php
+                
+                $query = "SELECT * FROM store";
+
+                $buscador = $_GET['texto-buscador'] ?? "";
+                if ($buscador != "") {
+                    $query = "SELECT * FROM store WHERE manager_staff_id = '$buscador'";
+                }
+
+                $resultado = mysqli_query($conexion, $query);
+
+                if ($resultado){
+                    while ($fila = mysqli_fetch_object($resultado)){
+                        echo "
+                        <tr>
+                            <td>{$fila->store_id}</td>
+                            <td>{$fila->manager_staff_id}</td>
+                            <td>{$fila->address_id}</td>
+                            <td>{$fila->last_update}</td>
+                        </tr>";
+                    }
+                }
+            ?>
                 </tbody>
             </table>
 

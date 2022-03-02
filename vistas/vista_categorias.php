@@ -7,13 +7,6 @@
         <h3> <?php echo $pagina; ?> </h3>
         <?php require_once "parte_head.php" ?>
 
-<body>
-    <?php require_once "parte_menu.php" ?>
-
-    <div class="container">
-        <h3> <?php echo $pagina; ?> </h3>
-
-
         <div class="row">
             <form class="col-6">
                 Aqui va el formulario!
@@ -42,12 +35,29 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
+                <?php
+                
+                $query = "SELECT * FROM category";
+
+                $buscador = $_GET['texto-buscador'] ?? "";
+                    if ($buscador != "") {
+                        $query = "SELECT * FROM category WHERE name = '$buscador'";
+                    }
+
+
+                $resultado = mysqli_query($conexion, $query);
+
+                if ($resultado){
+                    while ($fila = mysqli_fetch_object($resultado)){
+                        echo "
+                        <tr>
+                            <td>{$fila->category_id}</td>
+                            <td>{$fila->name}</td>
+                            <td>{$fila->last_update}</td>
+                        </tr>";
+                    }
+                }
+            ?>
                 </tbody>
             </table>
 

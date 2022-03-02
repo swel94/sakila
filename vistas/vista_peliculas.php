@@ -2,13 +2,6 @@
 
 <body>
     <?php require_once "parte_menu.php" ?>
-    
-    <div class="container">
-        <h3> <?php echo $pagina; ?> </h3>
-        <?php require_once "parte_head.php" ?>
-
-<body>
-    <?php require_once "parte_menu.php" ?>
 
     <div class="container">
         <h3> <?php echo $pagina; ?> </h3>
@@ -52,12 +45,38 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
+                <?php
+                
+                $query = "SELECT * FROM film";
+
+                $buscador = $_GET['texto-buscador'] ?? "";
+                    if ($buscador != "") {
+                        $query = "SELECT * FROM film WHERE title = '$buscador'";
+                    }
+
+                $resultado = mysqli_query($conexion, $query);
+
+                if ($resultado){
+                    while ($fila = mysqli_fetch_object($resultado)){
+                        echo "
+                        <tr>
+                            <td>{$fila->film_id}</td>
+                            <td>{$fila->title}</td>
+                            <td>{$fila->description}</td>
+                            <td>{$fila->release_year}</td>
+                            <td>{$fila->language_id}</td>
+                            <td>{$fila->original_language_id}</td>
+                            <td>{$fila->rental_duration}</td>
+                            <td>{$fila->rental_rate}</td>
+                            <td>{$fila->length}</td>
+                            <td>{$fila->replacement_cost}</td>
+                            <td>{$fila->rating}</td>
+                            <td>{$fila->special_features}</td>
+                            <td>{$fila->last_update}</td>
+                        </tr>";
+                    }
+                }
+            ?>
                 </tbody>
             </table>
 

@@ -2,13 +2,6 @@
 
 <body>
     <?php require_once "parte_menu.php" ?>
-    
-    <div class="container">
-        <h3> <?php echo $pagina; ?> </h3>
-        <?php require_once "parte_head.php" ?>
-
-<body>
-    <?php require_once "parte_menu.php" ?>
 
     <div class="container">
         <h3> <?php echo $pagina; ?> </h3>
@@ -25,7 +18,7 @@
             <form class="col-4">
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="Buscador" name="texto-buscador">
-                    <button class="btn btn-outline-secondary" type="submit" name="boton-buscar"><i class="bi bi-search"></i>Buscar</button>
+                    <button class="btn btn-outline-secondary" type="submit" name="buscar"><i class="bi bi-search"></i>Buscar</button>
                 </div>
 
             </form>
@@ -48,12 +41,34 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
+                <?php
+                
+                $query = "SELECT * FROM customer";
+
+                $buscador = $_GET['texto-buscador'] ?? "";
+                if ($buscador != ""){
+                    $query = "SELECT * FROM customer WHERE first_name = '$buscador'";
+                }
+
+                $resultado = mysqli_query($conexion, $query);
+
+                if ($resultado){
+                    while ($fila = mysqli_fetch_object($resultado)){
+                        echo "
+                        <tr>
+                            <td>{$fila->customer_id}</td>
+                            <td>{$fila->store_id}</td>
+                            <td>{$fila->first_name}</td>
+                            <td>{$fila->last_name}</td>
+                            <td>{$fila->email}</td>
+                            <td>{$fila->address_id}</td>
+                            <td>{$fila->active}</td>
+                            <td>{$fila->create_date}</td>
+                            <td>{$fila->last_update}</td>
+                        </tr>";
+                    }
+                }
+            ?>
                 </tbody>
             </table>
 
