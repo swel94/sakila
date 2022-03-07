@@ -11,7 +11,7 @@
     <title>Hello, world!</title>
 </head>
 <body>
-<ul class="nav">
+<ul class="nav justify-content-center">
   <li class="nav-item">
     <a class="nav-link" href="./actores.php" target="_blank">Actores</a>
   </li>

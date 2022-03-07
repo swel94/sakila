@@ -13,6 +13,11 @@
                 Aqui va el formulario!
 
             </form>
+            <?php if (!empty($error)); ?>
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <?php echo $error ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
         </div>
 
         <div class="row">
@@ -62,8 +67,7 @@
 
         </div>
     </div>
-    <i class="bi bi-star"></i>
-
+    
     <?php require_once "parte_footer.php" ?>
 </body>
 

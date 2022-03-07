@@ -12,6 +12,11 @@
                 Aqui va el formulario!
 
             </form>
+            <?php if (!empty($error)); ?>
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <?php echo $error ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
         </div>
 
         <div class="row">
@@ -25,54 +30,48 @@
         </div>
 
         <div class="row">
-            <div class="col-16"></div>
-            <table class="table table-striped table-hover">
-                <thead>
-                    <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Manager Staff ID</th>
-                        <th scope="col">Address ID</th>
-                        <th scope="col">Last Update</th>
-                    </tr>
-                </thead>
-                <tbody>
-                <?php
-                
-                $query = "SELECT * FROM store";
-
-                $buscador = $_GET['texto-buscador'] ?? "";
-                if ($buscador != "") {
-                    $query = "SELECT * FROM store WHERE manager_staff_id = '$buscador'";
-                }
-
-                $resultado = mysqli_query($conexion, $query);
-
-                if ($resultado){
-                    while ($fila = mysqli_fetch_object($resultado)){
-                        echo "
+            <div class="col-12">
+                <table class="table table-striped table-hover">
+                    <thead>
                         <tr>
-                            <td>{$fila->store_id}</td>
-                            <td>{$fila->manager_staff_id}</td>
-                            <td>{$fila->address_id}</td>
-                            <td>{$fila->last_update}</td>
-                        </tr>";
+                            <th scope="col">ID</th>
+                            <th scope="col">Manager Staff ID</th>
+                            <th scope="col">Address ID</th>
+                            <th scope="col">Last Update</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                
+                    $query = "SELECT * FROM store";
+                    $buscador = $_GET['texto-buscador'] ?? "";
+                    if ($buscador != "") {
+                        $query = "SELECT * FROM store WHERE manager_staff_id = '$buscador'";
                     }
-                }
-            ?>
-                </tbody>
-            </table>
-
+                    $resultado = mysqli_query($conexion, $query);
+                    if ($resultado){
+                        while ($fila = mysqli_fetch_object($resultado)){
+                            echo "
+                            <tr>
+                                <td>{$fila->store_id}</td>
+                                <td>{$fila->manager_staff_id}</td>
+                                <td>{$fila->address_id}</td>
+                                <td>{$fila->last_update}</td>
+                            </tr>";
+                        }
+                    }
+                ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-    <i class="bi bi-star"></i>
 
     <?php require_once "parte_footer.php" ?>
 </body>
 
 </html> 
     </div>
-    
-    <i class="bi bi-star"></i>
 
     <?php require_once "parte_footer.php" ?>
 </body>
