@@ -2,7 +2,7 @@
 
 function refrezcar ($archivo){
 
-    header("Locartion: $archivo");
+    header("Location: $archivo");
 }
 
 function alerta($titulo, $texto, $icono){
@@ -13,4 +13,4 @@ function alerta($titulo, $texto, $icono){
     })";
 }
 
-?>
+$script_alerta = "";

@@ -6,10 +6,32 @@
     <div class="container">
         <h3> <?php echo $pagina; ?> </h3>
 
-
         <div class="row">
-            <form class="col-6">
-                Aqui va el formulario!
+            <form class="col-6" method="POST">
+                <div class="mb-3">
+                    <label for="">City Name</label>
+                    <input type="text" name="city" class="form-control">
+                    <label for="">country</label>
+                    <select class="form-select" name="country_id">
+                        <option value="" selected>Select</option>
+
+                        <?php
+                        $query = "SELECT * FROM country";
+
+                        $resultado = mysqli_query($conexion, $query);
+
+                        if ($resultado) {
+                            while ($fila = mysqli_fetch_object($resultado)) {
+                                echo "<option value='$fila->country_id'>$fila->country</option>";
+                            }
+                        }
+                        ?>
+                    </select>
+
+                </div>
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary" name="save">Save</button>
+                </div>
 
             </form>
             <?php if (!empty($error)); ?>
@@ -41,26 +63,26 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <?php
-                
-                    $query = "SELECT * FROM city";
-                    $buscador = $_GET['texto-buscador'] ?? "";
+                        <?php
+
+                        $query = "SELECT * FROM city";
+                        $buscador = $_GET['texto-buscador'] ?? "";
                         if ($buscador != "") {
                             $query = "SELECT * FROM city WHERE city = '$buscador'";
                         }
-                    $resultado = mysqli_query($conexion, $query);
-                    if ($resultado){
-                        while ($fila = mysqli_fetch_object($resultado)){
-                            echo "
+                        $resultado = mysqli_query($conexion, $query);
+                        if ($resultado) {
+                            while ($fila = mysqli_fetch_object($resultado)) {
+                                echo "
                             <tr>
                                 <td>{$fila->city_id}</td>
                                 <td>{$fila->city}</td>
                                 <td>{$fila->country_id}</td>
                                 <td>{$fila->last_update}</td>
                             </tr>";
+                            }
                         }
-                    }
-                ?>
+                        ?>
                     </tbody>
                 </table>
             </div>
@@ -70,9 +92,10 @@
     <?php require_once "parte_footer.php" ?>
 </body>
 
-</html> 
-    </div>
-    
-    <?php require_once "parte_footer.php" ?>
+</html>
+</div>
+
+<?php require_once "parte_footer.php" ?>
 </body>
+
 </html>

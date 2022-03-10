@@ -11,28 +11,28 @@
 
             <form class="col-6" method="POST">
 
-            <div class="mb-3">
-                <label for="">Nombre</label>
-                <input type="text" name="name" class="form-control">
+                <div class="mb-3">
+                    <label for="">Nombre</label>
+                    <input type="text" name="name" class="form-control">
 
-            </div>
-            <div class="mb-3">
-                <button class="btn btn-primary" name="boton-guardar">Guardar</button>
-            </div>
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-primary" name="boton-guardar">Guardar</button>
+                </div>
 
             </form>
-            <?php if (!empty($error)): ?>
-            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                <?php echo $error ?>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
+            <?php if (!empty($error)) : ?>
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <?php echo $error ?>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
             <?php endif; ?>
 
-            <?php if (!empty($_SESSION['mensaje'])):?>
-            <div class="alert alert-info alert-dismissible fade show" role="alert">
-                <?php echo $error ?>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
+            <?php if (!empty($_SESSION['mensaje'])) : ?>
+                <div class="alert alert-info alert-dismissible fade show" role="alert">
+                    <?php echo ($_SESSION['mensaje']) ?>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
             <?php endif; ?>
 
         </div>

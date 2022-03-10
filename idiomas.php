@@ -1,5 +1,8 @@
 <?php
 
+require_once "recursos/conexion.php";
+require_once "recursos/funciones.php";
+
 $pagina = 'Idiomas';
 
 $error = "";
@@ -27,8 +30,24 @@ try {
 
         // guardar 
 
-        // refrezcar
-    }
+        $query = "INSERT INTO language (name) VALUES ('$name')";
+
+        $resultado = $conexion->query($query) or die ("Error en query");
+
+        if ($resultado) {
+            $_SESSION['mensaje'] = "Datos insertados correctamente";
+
+            $script_alerta = alerta("Insertado", "Datos insertados correctamente","success");
+
+        } else {
+            $script_alerta = alerta("Error" , "No se pudo insertar" , "error");
+
+            throw new Exception("No se pudo insertar los datos");
+
+        }
+
+    }   
+
 
 } catch(Throwable $ex) {
     $error = $ex->getMessage();

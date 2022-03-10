@@ -1,5 +1,8 @@
 <?php
 
+require_once "recursos/conexion.php";
+require_once "recursos/funciones.php";
+
 $pagina = 'Paises';
 
 $error = "";
@@ -26,8 +29,25 @@ try {
 
         // guardar 
 
+        $query = "INSERT INTO country (country) VALUES ('$country')";
+
+        $resultado = $conexion->query($query) or die ("Error en query");
+
+        if ($resultado) {
+            $_SESSION['mensaje'] = "Datos insertados correctamente";
+
+            $script_alerta = alerta("Insertado", "Datos insertados correctamente","success");
+
+        } else {
+            $script_alerta = alerta("Error" , "No se pudo insertar" , "error");
+
+            throw new Exception("No se pudo insertar los datos");
+
+        }
+
+    }   
+
         // refrezcar
-    }
 
 } catch(Throwable $ex) {
     $error = $ex->getMessage();

@@ -1,5 +1,8 @@
 <?php
 
+require_once "recursos/conexion.php";
+require_once "recursos/funciones.php";
+
 $pagina = 'Peliculas';
 
 $error = "";
