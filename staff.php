@@ -13,6 +13,7 @@ $error = "";
 try {
 
     # borrar esto despues 
+    
     echo "<pre>";
     print_r($_POST);
     echo "</pre>";
@@ -79,7 +80,7 @@ try {
             throw new Exception("No se pudo insertar los datos");
         }
 
-        // refrezcar
+        // refrescar
     }
 
 } catch(Throwable $ex) {

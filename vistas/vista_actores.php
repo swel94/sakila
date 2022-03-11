@@ -9,9 +9,18 @@
 
 
         <div class="row">
-            <form class="col-6">
-                Aqui va el formulario!
-
+            <form class="col-6" method="$_POST">
+            <div class="mb-3">
+                    <label for="" class="form-label" >First Name</label>
+                    <input type="form" class="form-control" name="first_name">
+                </div>
+                <div class="mb-3">
+                    <label for="" class="form-label" >Last Name</label>
+                    <input type="form" class="form-control" name="last_name">
+                </div>
+                <div class="mb-3">
+                <button type="submit" class="btn btn-primary" name="save_button">Save</button>
+                </div>
             </form>
             <?php if (!empty($error)); ?>
             <div class="alert alert-warning alert-dismissible fade show" role="alert">
