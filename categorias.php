@@ -13,7 +13,7 @@ try {
     # borrar esto despues 
     echo "<pre>";
     print_r($_POST);
-    echo "</pre>";
+    echo "</pre>";  
 
     // verificar si le da clicl al boton 
     if (isset($_POST['boton-guardar'])) {

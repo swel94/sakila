@@ -21,7 +21,6 @@ try {
     // verificar si le da clicl al boton 
     if (isset($_POST['save_button'])) {
 
-        echo "guardando....";
 
         // variables
 

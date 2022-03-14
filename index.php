@@ -13,31 +13,31 @@
 <body>
 <ul class="nav justify-content-center">
   <li class="nav-item">
-    <a class="nav-link" href="./actores.php" target="_blank">Actores</a>
+    <a class="nav-link fs-4 " href="./actores.php" target="_blank">Actores</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="./categorias.php" target="_blank">Categorias</a>
+    <a class="nav-link fs-4" href="./categorias.php" target="_blank">Categorias</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="./ciudades.php" target="_blank">Ciudades</a>
+    <a class="nav-link fs-4" href="./ciudades.php" target="_blank">Ciudades</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="./clientes.php" target="_blank">Clientes</a>
+    <a class="nav-link fs-4" href="./clientes.php" target="_blank">Clientes</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="./idiomas.php" target="_blank">Idiomas</a>
+    <a class="nav-link fs-4" href="./idiomas.php" target="_blank">Idiomas</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="./paises.php" target="_blank">Paises</a>
+    <a class="nav-link fs-4" href="./paises.php" target="_blank">Paises</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="./peliculas.php">Peliculas</a>
+    <a class="nav-link fs-4" href="./peliculas.php">Peliculas</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="./staff.php">Staff</a>
+    <a class="nav-link fs-4" href="./staff.php">Staff</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="./tiendas.php">Tiendas</a>
+    <a class="nav-link fs-4" href="./tiendas.php">Tiendas</a>
   </li>
 </ul>
     <div class="col-lg-8 mx-auto p-3 py-md-5">

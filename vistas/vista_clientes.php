@@ -8,9 +8,65 @@
 
 
         <div class="row">
-            <form class="col-6">
-                Aqui va el formulario!
+            <form class="col-6" method="POST">
+            <div class="mb-3">
+            <select class="form-select" name="store_id">
+                        <option value="">Store</option>
+                        <?php
+                        $query = "SELECT * FROM store";
 
+                        $resultado = mysqli_query($conexion, $query);
+
+                        if ($resultado) {
+                            while ($fila = mysqli_fetch_object($resultado)) {
+                                echo "<option value='$fila->store_id'>$fila->manager_staff_id</option>";
+                            }
+                        }
+                        ?>
+                    </select>
+            </div>
+            <div class="mb-3">
+                    <label for="" class="form-label" >First Name</label>
+                    <input type="form" class="form-control" name="first_name">
+                </div>
+                <div class="mb-3">
+                    <label for="" class="form-label" >Last Name</label>
+                    <input type="form" class="form-control" name="last_name">
+                </div>
+                <div class="mb-3">
+                    <label for="" class="form-label" >Email</label>
+                    <input type="form" class="form-control" name="email">
+                </div>
+                <div class="mb-3">
+                    <select class="form-select" name="address_id">
+                        <option value="">Address</option>
+                        <?php
+                        $query = "SELECT * FROM address";
+
+                        $resultado = mysqli_query($conexion, $query);
+
+                        if ($resultado) {
+                            while ($fila = mysqli_fetch_object($resultado)) {
+                                echo "<option value='$fila->address_id'>$fila->address</option>";
+                            }
+                        }
+                        ?>
+                    </select>
+                </div>
+                <div class="mb-3">
+                <select class="form-select" name = "active">
+                <option value ="">Active</option>
+                <option value="1">1</option>
+                <option value="2">0</option>
+                </select>
+                </div>
+                <div class="mb-3">
+                    <label for="" class="form-label" >Create Date</label>
+                    <input type="date" class="form-control" name="create_date">
+                </div>
+                <div class="mb-3">
+                <button type="submit" class="btn btn-primary" name="save_button">Save</button>
+                </div>
             </form>
             <?php if (!empty($error)); ?>
             <div class="alert alert-warning alert-dismissible fade show" role="alert">

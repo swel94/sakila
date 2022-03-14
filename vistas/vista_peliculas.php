@@ -5,12 +5,23 @@
 
     <div class="container">
         <h3> <?php echo $pagina; ?> </h3>
-
-
+    
+        <!-- Formulario Insert -->
+     
         <div class="row">
-            <form class="col-6">
-                Aqui va el formulario!
-
+            <form class="col-6" method ="POST">
+            <div class="mb-3">
+                    <label for="" class="form-label" >Title</label>
+                    <input type="form" class="form-control" name="title">
+                </div>
+                <div class="mb-3">
+                    <label for="" class="form-label" >Description</label>
+                    <input type="form" class="form-control" name="description">
+                </div>
+                <div class="mb-3">
+                    <label for="" class="form-label" >Release Year</label>
+                    <input type="form" class="form-control" name="description">
+                </div>
             </form>
             <?php if (!empty($error)); ?>
             <div class="alert alert-warning alert-dismissible fade show" role="alert">

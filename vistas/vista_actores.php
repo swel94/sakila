@@ -9,7 +9,7 @@
 
 
         <div class="row">
-            <form class="col-6" method="$_POST">
+            <form class="col-6" method="POST">
             <div class="mb-3">
                     <label for="" class="form-label" >First Name</label>
                     <input type="form" class="form-control" name="first_name">
