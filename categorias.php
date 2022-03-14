@@ -13,7 +13,7 @@ try {
     # borrar esto despues 
     echo "<pre>";
     print_r($_POST);
-    echo "</pre>";  
+    echo "</pre>";
 
     // verificar si le da clicl al boton 
     if (isset($_POST['boton-guardar'])) {
@@ -22,36 +22,58 @@ try {
         // variables
 
         $name = $_POST['name'];
-        
+
         // validaciones
 
-        if (empty($name)){
+        if (empty($name)) {
             throw new Exception("This field can not be empty");
         }
 
-        // guardar 
+        // guardar // actualizar 
 
-        $query = "INSERT INTO category (name) VALUES ('$name')";
+        $id = $_POST['id'] ?? "";
 
-        $resultado = $conexion->query($query) or die ("Error en query");
-
-        if ($resultado) {
-            $_SESSION['mensaje'] = "Datos insertados correctamente";
-
-            $script_alerta = alerta("Insertado", "Datos insertados correctamente","success");
-
-        } else {
-            $script_alerta = alerta("Error" , "No se pudo insertar" , "error");
-
-            throw new Exception("No se pudo insertar los datos");
-
+        if (empty($id)){
+            //Guardar
+            $query = "INSERT INTO category (name) VALUES ('$name')";
+        } else{
+            // Actualizar
+            $query = "UPDATE category SET name = '$name' WHERE category_id = $id";
         }
 
-    }   
+        
 
-    
+        $resultado = $conexion->query($query) or die("Error en query");
 
-} catch(Throwable $ex) {
+        if ($resultado) {
+            $_SESSION['mensaje'] = "Datos procesados correctamente";
+
+            $script_alerta = alerta("Insertado", "Datos procesados correctamente", "success");
+        } else {
+            $script_alerta = alerta("Error", "No se pudieron procesar los datos", "error");
+
+            throw new Exception("No se pudieron procesar los datos");
+        }
+    }
+
+    // Buscar info para editar
+
+    if (isset($_GET['editar'])) {
+        $id = $_GET['editar'];
+
+        $query = "SELECT * FROM category WHERE category_id = '$id'";
+
+        $resultado = mysqli_query($conexion, $query) or die ("Error en query");
+
+        if ($resultado) {
+            while ($fila = mysqli_fetch_object($resultado)) {
+                    $category_id = $fila->category_id;
+                    $category_name = $fila->name;
+                    echo $category_name;
+            }
+        }
+    }
+} catch (Throwable $ex) {
     $error = $ex->getMessage();
 }
 

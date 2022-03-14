@@ -11,9 +11,11 @@
 
             <form class="col-6" method="POST">
 
+                <input type="text" name="id" value="<?php echo $category_id ?? ""; ?>">
+
                 <div class="mb-3">
                     <label for="">Nombre</label>
-                    <input type="text" name="name" class="form-control">
+                    <input value= "<?php echo $category_name ?? "";?>" type="text" name="name" class="form-control">
 
                 </div>
                 <div class="mb-3">
@@ -73,6 +75,10 @@
                                 <td>{$fila->category_id}</td>
                                 <td>{$fila->name}</td>
                                 <td>{$fila->last_update}</td>
+                                <td>
+                                <a class='btn btn-info' href='{$_SERVER['PHP_SELF']}?editar=$fila->category_id'>Edit</a>
+                                <a class='btn btn-danger' href='{$_SERVER['PHP_SELF']}?eliminar=$fila->category_id'>Delete</a>
+                                </td>
                             </tr>";
                             }
                         }
