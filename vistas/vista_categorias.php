@@ -77,7 +77,7 @@
                                 <td>{$fila->last_update}</td>
                                 <td>
                                 <a class='btn btn-info' href='{$_SERVER['PHP_SELF']}?editar=$fila->category_id'>Edit</a>
-                                <a class='btn btn-danger' href='{$_SERVER['PHP_SELF']}?eliminar=$fila->category_id'>Delete</a>
+                                <a class='btn btn-danger' href='{$_SERVER['PHP_SELF']}?delete=$fila->category_id'>Delete</a>
                                 </td>
                             </tr>";
                             }

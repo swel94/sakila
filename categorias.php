@@ -1,5 +1,7 @@
 <?php
 
+use JetBrains\PhpStorm\ExpectedValues;
+
 require_once "recursos/conexion.php";
 require_once "recursos/funciones.php";
 
@@ -29,7 +31,7 @@ try {
             throw new Exception("This field can not be empty");
         }
 
-        // guardar // actualizar 
+        // Guardar // Actualizar 
 
         $id = $_POST['id'] ?? "";
 
@@ -73,6 +75,26 @@ try {
             }
         }
     }
+
+    // Delete
+
+    if (isset($_GET['delete'])){
+        $category_id = $_GET['delete'];
+
+        $query = "DELETE FROM category WHERE category_id = '$category_id'";
+        $resultado = $conexion->query($query) or die ("Error en query");
+
+        if ($resultado){
+            $script_alerta = alerta("Delete", "Data has been deleted", "Success");
+        }
+
+        else {
+            $script_alerta = alerta("Error" , "Data could not be deleted", "Error");
+            throw new Exception("Data could not be deleted");
+        }
+    }
+
+
 } catch (Throwable $ex) {
     $error = $ex->getMessage();
 }
