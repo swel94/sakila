@@ -20,7 +20,77 @@
                 </div>
                 <div class="mb-3">
                     <label for="" class="form-label">Release Year</label>
-                    <input type="form" class="form-control" name="description">
+                    <input type="form" class="form-control" name="release_year">
+                </div>
+                <div class="mb-3">
+                    <select class="form-select" name="language_id">
+                        <option value="">Language</option>
+                        <?php
+                        $query = "SELECT * FROM language";
+
+                        $resultado = mysqli_query($conexion, $query);
+
+                        if ($resultado) {
+                            while ($fila = mysqli_fetch_object($resultado)) {
+                                echo "<option value='$fila->language_id'>$fila->language_id</option>";
+                            }
+                        }
+                        ?>    
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <select class="form-select" name="original_language_id">
+                        <option value="">Original Language</option>    
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="" class="form-label">Rental Duration</label>
+                    <input type="form" class="form-control" name="rental_duration">
+                </div>
+                <div class="mb-3">
+                    <label for="" class="form-label">Rental Rate</label>
+                    <input type="form" class="form-control" name="rental_rate">
+                </div>
+                <div class="mb-3">
+                    <label for="" class="form-label">Lenght</label>
+                    <input type="form" class="form-control" name="lenght">
+                </div>
+                <div class="mb-3">
+                    <label for="" class="form-label">Replacement Cost</label>
+                    <input type="form" class="form-control" name="replacement_cost">
+                </div>
+                <div class="mb-3">
+                    <select class="form-select" name="rating">
+                        <option selected>Rating</option>
+                        <?php
+                        $query = "SELECT DISTINCT rating FROM film WHERE rating != ''";
+                        $resultado = mysqli_query($conexion, $query);
+
+                        if ($resultado) {
+                            while ($fila = mysqli_fetch_object($resultado)){
+                                echo "<option value = '$fila->rating'>$fila->rating</option>";
+                            }
+                        }
+                        ?>    
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <select class="form-select" name="special_features">
+                        <option selected>Special Features</option>
+                        <?php
+                        $query = "SELECT DISTINCT rating FROM film WHERE special_features != ''";
+                        $resultado = mysqli_query($conexion, $query);
+
+                        if ($resultado) {
+                            while ($fila = mysqli_fetch_object($resultado)) {
+                                echo "<option value = '$fila->special_features'>$fila->special_features</option>";
+                            }
+                        }
+                        ?>    
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary" name="save_button">Save</button>
                 </div>
             </form>
             <?php if (!empty($error)); ?>
